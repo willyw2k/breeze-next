@@ -1,19 +1,26 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-
+const colors = require('tailwindcss/colors')
 module.exports = {
-    content: ['./src/**/*.js'],
-    darkMode: 'media',
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-            },
-        },
+  mode: 'jit',
+  content: {
+    files: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+  },
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        display: ['Gilroy', ...defaultTheme.fontFamily.sans],
+      },    
     },
-    variants: {
-        extend: {
-            opacity: ['disabled'],
-        },
-    },
-    plugins: [require('@tailwindcss/forms')],
+  },
+  corePlugins: {
+    container: false,
+    float: false,
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/line-clamp'),
+  ],
 }
