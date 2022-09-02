@@ -1,11 +1,9 @@
-import Axios from 'axios'
+export const csrf = () => fetch('/sanctum/csrf-cookie')
 
-const axios = Axios.create({
+export const axios = fetch({
     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
     },
     withCredentials: true,
 })
-
-export default axios
